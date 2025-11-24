@@ -4,7 +4,7 @@ import os
 
 load_dotenv()
 
-api = os.getenv("geminai_key")
+api = os.getenv("apikey")
 
 client = genai.client(api_key=api)
 
@@ -22,10 +22,8 @@ Your job:
 while True:
     userInput =input("user: ")
 
-    final_prompt = f"{personal}\n\n
-User: {userInput}\nloanAssist:"
-    response = client.models
-generate_contents(
+    final_prompt = f"{persona}\n\nUser: {userInput}:"
+    response = client.models.generate_content(
     model="gemini-2.5-flash",
     contents=final_prompt
     )
